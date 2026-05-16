@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: Outfit;
+}
+.active hr {
+  @apply block;
+}
+
+@media (max-width: 767px) {
+  .active {
+    @apply bg-primary text-white shadow-md;
+  }
+}
+::-webkit-scrollbar {
+  @apply hidden;
+}
+
+html {
+  transition: filter 0.3s ease-in-out;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+html.dark-theme {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html.dark-theme img,
+html.dark-theme video {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html.eye-comfort-theme {
+  filter: sepia(0.3) hue-rotate(-15deg) contrast(0.9) brightness(0.9);
+  background-color: #fcf4ec;
+}

@@ -1,0 +1,43 @@
+# Video Consultation Fixes
+
+This plan addresses the issues with multiple tabs, schedule enforcement, and user moderation.
+
+## User Review Required
+
+> [!IMPORTANT]  
+> Because we are using the public **Jitsi Meet** server (`meet.jit.si`), it is difficult to cryptographically enforce who is a "Moderator" without setting up a custom backend Jitsi server. However, we can use Jitsi's URL configurations to **hide** moderator controls (like kick, mute everyone) from the patient's view, and grant full controls to the Doctor's view. 
+> 
+> Also, the public `meet.jit.si` now requires the room creator (the first person to join) to log in with a Google/Facebook account to start the meeting. The doctor will need to be the first to join and log in, which naturally prevents the patient from starting the meeting and becoming the moderator. 
+
+## Proposed Changes
+
+### 1. Enforce Scheduled Time
+
+We will add a time-check utility function to both the Patient and Doctor appointment pages. The **Join Video Call** button will only be rendered (or enabled) if the current time is within the appointment window:
+- **Window Start:** 5 minutes before the booked `slotTime`.
+- **Window End:** 60 minutes (1 hour) after the booked `slotTime`.
+
+### 2. Prevent Multiple Tabs
+
+We will modify the `window.open()` function to use a specific window target name (e.g., `window.open(link, 'HMS_VideoCall_' + appointmentId)`). If the user clicks the button multiple times, the browser will simply refocus the existing tab instead of opening new ones.
+
+### 3. Patient Role Restrictions
+
+To restrict the patient's capabilities in the call, we will append specific Jitsi configuration flags to the patient's link:
+- `config.remoteVideoMenu.disableKick=true`
+- `config.disableRemoteMute=true`
+- `config.disableModeratorIndicator=true`
+
+The Doctor's link will remain standard, giving them full access to the Jitsi Meet moderator tools.
+
+## Implementation Steps
+
+#### [MODIFY] [MyAppointments.jsx](file:///c:/Webdev/hms-fullstack-main/frontend/src/pages/MyAppointments.jsx)
+- Add the `isJoinable(slotDate, slotTime)` helper function.
+- Update the "Join Video Call" button to only appear (or be clickable) when `isJoinable` returns true.
+- Modify the `window.open` call to use a named target and append patient-restrictive Jitsi configs to the `meetLink`.
+
+#### [MODIFY] [DoctorAppointments.jsx](file:///c:/Webdev/hms-fullstack-main/admin/src/pages/Doctor/DoctorAppointments.jsx)
+- Add the `isJoinable(slotDate, slotTime)` helper function.
+- Update the "Join" button to only be accessible during the scheduled time window.
+- Modify the `window.open` call to use a named target.
