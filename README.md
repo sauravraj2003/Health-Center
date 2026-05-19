@@ -1,6 +1,6 @@
 # Health Center - Hospital Management System
 
-## This is a Fullstack Hospital Management System project built using the MERN stack, with three distinct user roles: User, Doctor, and Admin.
+### This is a Fullstack Hospital Management System project built using the MERN stack, with three distinct user roles: User, Doctor, and Admin.
 
 1. **User Features**:
    Users can register or log in to explore the list of available doctors by their specializations. They can easily book appointments and view their upcoming and past appointments. Users can now opt for video consultations with doctors for remote healthcare and submit direct queries to the admin for improved support. Users can also update their personal information in the "My Profile" section.
@@ -35,4 +35,4 @@ _This project demonstrates a comprehensive hospital management solution, support
 
 <img src="frontend/src/readme_images/admin_home.png" alt="Admin Login" style="padding:0 10px;"/>
 
-### Thank You for Visiting 🎊 🎉 🙏
+### Thank You for Visiting 🎊
