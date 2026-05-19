@@ -52,18 +52,18 @@ const Contact = () => {
         <div className="flex flex-col justify-center items-start gap-6">
           <p className="font-semibold text-xl text-gray-600">OUR OFFICE</p>
           <p className="text-gray-500">
-            Chndrasekharpur <br />
-            Bhubaneswar,Odisha-751024
+            Gooba Garden <br />
+            IIT Kanpur, Uttar Pradesh-208016
           </p>
           <p className="text-gray-500">
-            Tel:+91 82490-01710 <br />
-            Email: abhijitnanda8249@gmail.com{" "}
+            Tel:+91 69696-96971 <br />
+            Email: akadbakad@gmail.com{" "}
           </p>
           <p className="font-semibold text-lg text-gray-600">
-            CAREERS AT PRESCRIPTO
+            CAREERS AT Health Center
           </p>
           <p className="text-gray-500">
-            Learn more about our teams and job openings.
+            Hume hi nhi mila toh aapko kaise milega :)
           </p>
           <button className="border border-black px-8 py-4 text-md hover:bg-black hover:text-white transition-all duration-500">
             Explore Jobs

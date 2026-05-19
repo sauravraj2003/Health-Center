@@ -6,6 +6,7 @@
 * {
   font-family: Outfit;
 }
+
 .active hr {
   @apply block;
 }
@@ -15,6 +16,7 @@
     @apply bg-primary text-white shadow-md;
   }
 }
+
 ::-webkit-scrollbar {
   @apply hidden;
 }
